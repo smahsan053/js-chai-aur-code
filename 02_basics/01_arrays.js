@@ -37,7 +37,7 @@ console.log(myArr.indexOf(19));
 const newArr = myArr.join()
 console.log(myArr);
 console.log(typeof myArr);
-console.log(newArr);
+console.log(newArr); // join converts an array into an string
 console.log(typeof newArr);
 
 // slice
