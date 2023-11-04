@@ -86,3 +86,51 @@ console.log((Object.values(tinderUser))); // return all values in an Array
 console.log(Object.entries(tinderUser)); // returns an array inside of another array
 console.log(tinderUser.hasOwnProperty("isLoggedIn"));
 console.log(tinderUser.hasOwnProperty("isLogged"));
+
+// destructuring of an object
+
+const course = {
+    courseName: "js in hindi",
+    price: "999",
+    courseInstructor: "hitesh"
+}
+
+console.log(course);
+// we need to write below lines of code if want to recall courseInstructor name
+// if we want to do so multiple times, we need to type this lines again & again
+console.log(course.courseInstructor);
+// so the solution is destructuring
+const {courseInstructor} = course
+// now we only need to write this
+console.log(courseInstructor);
+// we can also rename as below
+const {courseName: cn} = course
+console.log(cn);
+
+// react example
+// props.company
+// const navbar = ({company}) => {
+
+// }
+// navbar(company = "hitesh")
+
+// complex xml structure
+// JSON
+// {}
+
+// available in two formats
+// object form
+// {
+//     "name": "hitesh",
+//     "courseName": "Js in hindi",
+//     "price": "free"
+// }
+
+// array form
+[
+    {},
+    {},
+    {},
+    {},
+    {}
+]
