@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #212121;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .card{
+            height: 400px;
+            width: 280px;
+            border-radius: 12px;
+            background-color: #ecc7c7;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        img{
+            width: 100%;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            object-fit: cover;
+        }
+        p {
+            color: green;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 14px;
+        }
+        .btn{
+            border-radius: 8px;
+            padding: 8px;
+            width: 120px;
+            background-color: #df5b5b;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            position: absolute;
+            bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Value	State	Description
+0	UNSENT	Client has been created. open() not called yet.
+1	OPENED	open() has been called.
+2	HEADERS_RECEIVED	send() has been called, and headers and status are available.
+3	LOADING	Downloading; responseText holds partial data.
+4	DONE	The operation is complete. -->
+</body>
+<script>
+    const requestUrl = "https://api.github.com/users/hiteshchoudhary"
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', requestUrl)
+    // console.log('HERE');
+    // console.log(xhr.readyState);
+    // to continuously track the ready state use .onreadystatechange
+    xhr.onreadystatechange = function () {
+        // console.log(xhr.readyState);
+        if (xhr.readyState === 4) {
+            const data = this.responseText;
+            // console.log(data); // return string, so we need to convert into json so we can apply object properties
+            // console.log(data.followers); // will return undefined because data is string
+            // console.log(typeof data); 
+            const data1 = JSON.parse(this.responseText)
+            console.log(data1)
+            // console.log(typeof data1)
+            // console.log(data1.followers)
+            const followers = data1.followers;
+            // console.log(followers);
+            const photoUrl = data1.avatar_url;
+            // console.log(photoUrl);
+
+            const xhr2 = new XMLHttpRequest()
+            xhr2.open('GET', photoUrl)
+            xhr2.responseType = 'blob';
+            xhr2.onreadystatechange = function () {
+                if (xhr2.readyState === 4) {
+                    // xhr2.onload = function () {
+                    //     var imgObj = new Image();
+                    //     imgObj.onload = function () {
+                    //         img.src = imgObj.src;
+                    //     };
+                    //     imgObj.src = URL.createObjectURL(xhr2.response);
+                    // };
+                    xhr2.onload = function () {
+                        var blob = xhr2.response;
+                        const cardDiv = document.createElement('div');
+                        cardDiv.setAttribute("class", "card")
+                        document.body.appendChild(cardDiv);
+                        const photoDiv = document.createElement('div');
+                        photoDiv.setAttribute("class", "photo")
+                        const followerCount = document.createElement('p');
+                        followerCount.innerHTML = `Followers: ${followers}`
+                        const img = document.createElement('img');
+                        img.src = URL.createObjectURL(blob);
+                        photoDiv.appendChild(img)
+                        const button = document.createElement('button')
+                        button.setAttribute("class", "btn")
+                        button.innerHTML = "Show Details"
+                        cardDiv.appendChild(button)
+                        button.addEventListener('click', function(){
+                            if (button.innerHTML === "Show Details"){
+                            cardDiv.appendChild(photoDiv)
+                            cardDiv.appendChild(followerCount)
+                            button.innerHTML = "Hide Details"
+                        } else{
+                            cardDiv.removeChild(photoDiv)
+                            cardDiv.removeChild(followerCount)
+                            button.innerHTML = "Show Details"
+                            }
+                            
+                        })
+                    };
+                }
+            }
+            xhr2.send()
+        }
+    }
+    xhr.send()
+</script>
+
+</html>
