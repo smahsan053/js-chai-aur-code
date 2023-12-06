@@ -36,6 +36,8 @@ console.log(userOne);
 const userTwoNewCopy = new User("Ali", 11, false)
 console.log(userOne);
 console.log(userTwoNewCopy); // new key word is a consructor function gives a new instance instead of overwriting the existing one
+console.log(userOne.constructor); // reference to itself
+console.log(userOne.greeting());
 
 // new keyword in js
 // Step 1: Generate an empty object called as Instance
