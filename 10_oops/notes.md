@@ -11,8 +11,8 @@
 - to save code from messing up.
 
 ## Parts of OOp
-Object Literals
 
+- Object Literals (base unit)
 - Constructor function
 - Prototype
 - Classes

@@ -19,6 +19,12 @@ console.log(this);
 // and so on for all user we need to make individual object literals which will make the code messy
 // therefore oops concept is introduced to make the code short & precise
 
+// Constructor function (new)
+// new Promise()
+// new Date()
+// new keyword allows to create multiple instances from an object literals
+// used to create new context
+
 function User(username, loginCount, isLoggedIn){
     this.username = username
     this.loginCount = loginCount
