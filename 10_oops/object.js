@@ -18,8 +18,12 @@ createUser.prototype.increment = function(){
 createUser.prototype.printMe = function(){
     console.log(`score is ${this.score}`);
 }
-const chai = new createUser("chai", 25) 
 const tea = createUser("tea", 250)
+// tea.increment() & tea.printMe() will not work here
+// because function does not have any idea of these terms
+// applying new keyword before function will solve the problem
+const chai = new createUser("chai", 25)
+// Now function have info about some additional protypal properties .increment() & .printMe()
 // console.log(chai);
 chai.printMe()
 // tea.printMe() // will give error here bcoz new keyword is not associated with key. so PrintMe() is not reachable

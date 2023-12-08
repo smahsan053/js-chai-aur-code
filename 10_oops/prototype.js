@@ -59,7 +59,7 @@ teacher.__proto__ = user // teacher will have all property of user
 
 // Mordern Syntax of inheritance
 Object.setPrototypeOf(teachingSupport, teacher)
-
+// teachingSupport will have access to all property of teacher
 // Now coem to our point
 let anotherUsername = "ChaiAurCode      "
 String.prototype.trueLength = function(){

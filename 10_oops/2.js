@@ -29,6 +29,7 @@ function createUser(username, score){
     return this
 }
 console.log(createUser("ahsan", "22"));
+// console.log(createUser("ahsan", "22").username);
 console.log(createUser.prototype);
 // when we print. prototype it returns empty{}
 // it means e can inject our custom function within this parenthesis
@@ -38,4 +39,6 @@ return (`The score of ${this.username} is ${this.score} but with an increment it
 }
 
 const ahs = new createUser("ahsan", "22")
+console.log(ahs);
 console.log(ahs.increment());
+console.log(ahs.username);
