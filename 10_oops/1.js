@@ -1,12 +1,18 @@
 function user(a, b, c){
+// in this case this will not identify what is variable and what its value is
 // a = a;
 // b = b;
 // c = c;
+// in this case this will identify its variable but when we will use new keyword to make an object retur n will be empty parethesis.
+// bcoz its this keyword that is responsible to inject value when there is new keyword
+// ah = a;
+// bh = b;
+// ch = c;
 this.a = a;
 this.b = b;
 this.c = c;
 return this;
-// return a+b=c
+// return a+b+c;
 // return { sum: a + b + c, message: "Explicit return value" };
 }
 const userOne = user(3,3,3)
