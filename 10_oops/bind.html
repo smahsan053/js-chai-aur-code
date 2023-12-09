@@ -17,6 +17,8 @@
             document
             .querySelector('button')
             .addEventListener('click', this.handleClick.bind(this))
+            // bind used here to pass a reference to the function
+            // call will immediately inoke the function
         }
         handleClick(){
             console.log("Button Clcked");
